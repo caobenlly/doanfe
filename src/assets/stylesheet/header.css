@@ -1,0 +1,105 @@
+.logoImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.text {
+  font-size: 20px !important;
+}
+.ModalClass .ant-modal-content {
+  width: 500px;
+  padding: 10px 50px;
+  background-image: linear-gradient(180deg, #e5e6f1, #5882cd);
+  border-radius: 25px;
+}
+
+.containerLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.textTiltle {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 30px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+}
+.remenberme {
+  text-align: left;
+}
+.butonLogin {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 30px 0 70px;
+}
+.textLogin {
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.2;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 120px;
+  height: 50px;
+  border-radius: 25px;
+
+  background: #9152f8;
+  background: -webkit-linear-gradient(180deg, #2f74f3, #e5e6f1);
+  background: -o-linear-gradient(180deg, #2f74f3, #e5e6f1);
+  background: -moz-linear-gradient(180deg, #2f74f3, #e5e6f1);
+  background: linear-gradient(180deg, #2f74f3, #e5e6f1);
+  position: relative;
+  z-index: 1;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.textLogin::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  opacity: 1;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.textLogin:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.textLogin:hover:before {
+  opacity: 0;
+}
+
+.textForGotPassWord {
+  text-decoration: underline;
+  cursor: pointer;
+margin: 0 15px
+}

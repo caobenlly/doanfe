@@ -1,0 +1,311 @@
+.containerSup {
+  flex: 1;
+  text-align: center;
+}
+.titleSup {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.titleBody {
+  width: 80%;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  line-height: 0.1em;
+  margin: 10px 0 30px;
+}
+
+.titleBody span {
+  background: white;
+  padding: 0 10px;
+}
+.priceSp {
+  text-align: center;
+}
+.componentSp {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 200px;
+}
+.containerFilter {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 250px;
+  padding: 10px 25px;
+  min-height: 700px;
+}
+.containerSp {
+  border: 1px solid #ddd;
+  flex: 1;
+  min-height: 700px;
+  max-height: 700px;
+  overflow: auto;
+  padding: 15px 10px;
+}
+.titleThuonghieu,
+.titleSize,
+.titleDanhmuc {
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+.listDanhmuc,
+.listThuonghieu {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  font-size: 20px;
+}
+.checkboxItem {
+  font-size: 18px;
+}
+.listSize {
+  display: flex;
+  flex-wrap: wrap;
+}
+.itemSize {
+  margin: 5px 5px 0 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerThongtinSanPham {
+  display: flex;
+  padding: 15px 300px;
+  height: 700px;
+}
+.imgSanPham {
+  flex: 1;
+}
+.splide.is-initialized,
+.splide.is-rendered {
+  visibility: visible;
+  padding: 0;
+}
+.inforSanPham {
+  padding: 0 20px;
+  font-size: 18px;
+  color: #727272;
+  flex: 1;
+}
+.titleSanPham {
+  margin-bottom: 0.5rem;
+  color: #222529;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.inforChitiet {
+  border-bottom: 2px solid #ddd;
+  line-height: 70px;
+  height: 70px;
+  text-align: left;
+}
+.inpuSelectSize,
+.buttonMuaHang {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 70px;
+  line-height: 70px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+}
+.dataTitleSize {
+  font-size: 15px;
+  font-weight: bold;
+}
+.buttonMuaHang {
+  background-color: #0080d1;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.inforGiaUuDai {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.titleGia {
+  height: 20px;
+  line-height: 20px;
+}
+.textMua {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  flex: 1;
+  border-left: 1px solid;
+}
+.listCustom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.imgItem {
+  /* border: 1px solid; */
+  width: 23%;
+  padding: 3px;
+}
+.menuSanPham {
+  padding: 15px 300px;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 500;
+  min-height: 300px;
+}
+.ant-menu-light.ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: #000;
+}
+.ant-menu-title-content {
+  /* color: #000; */
+}
+.ant-layout-sider {
+  width: 256px;
+}
+.ant-menu-light.ant-menu-horizontal > .ant-menu-item-selected::after,
+.ant-menu-light.ant-menu-horizontal > .ant-menu-item-selected:hover {
+  border-bottom-color: #727272;
+}
+.book-container {
+  background-color: white;
+  border-radius: 5px;
+  height: 140px;
+  box-shadow: 5px 5px 5px #c4c4c4;
+}
+.book-content {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.titleBoxSp {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  padding: 0 20px;
+}
+.titleBoxSp > div {
+  padding: 5px;
+  font-size: 25px;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+}
+.titleBoxSp > p {
+  text-align: right;
+  color: #999;
+  font-size: 14px;
+  font-weight: 400;
+}
+.titleBoxSp > p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.noteTitle {
+  border: 1px solid #dadada;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 15px;
+  background-color: #f6f6f6;
+  border-radius: 7px 7px 0 0;
+}
+.containerChar {
+  display: flex;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.charPie {
+  background-color: white;
+}
+.sliderAdmin {
+  height: 100vh;
+}
+.dataSize {
+  font-size: 30px;
+  font-weight: 600;
+  color: black;
+}
+
+.ant-col .css-dev-only-do-not-override-htwhyh {
+  height: 100%;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nameSp {
+  font-weight: 500;
+}
+.product-info {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.product-details div {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product-size {
+  color: #777;
+}
+
+.product-price {
+  color: #f00;
+}
+
+.product-discount {
+  color: #090;
+}
+
+.product-total {
+  color: #000;
+}
+.dataSanPham {
+  width: 100%;
+  height: 70%;
+  padding: 2px;
+}
+.ck-editor__editable {
+  min-height: 400px !important;
+}
+.containerContent {
+  display: flex;
+}
+.tableContent {
+  flex: 2;
+  margin-bottom: 30px;
+}
+.tableInfo {
+  flex: 1;
+  padding: 0 20px;
+}
+.slider-button {
+  height: 30px;
+}

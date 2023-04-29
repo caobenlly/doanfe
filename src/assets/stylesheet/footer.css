@@ -1,0 +1,35 @@
+.footerBox {
+  padding: 0 100px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  color: #ffffff;
+}
+.footerLeft,
+.footerCenter {
+  flex: 1;
+  text-align: left;
+}
+.footerRight {
+  text-align: left;
+  flex: 2;
+}
+.footerSup{
+
+}
+.titleFooter{
+
+}
+.titleFooterSup{
+margin-bottom: 0;
+}
+.textSup{
+color: #706e6e;
+}
+.inforFooter{
+    margin-bottom: 15px;
+}
+.iconFooter{
+    margin: 25px 0;
+    display: flex;
+}

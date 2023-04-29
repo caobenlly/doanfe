@@ -1,0 +1,369 @@
+import { Checkbox, Form, Input, Modal } from "antd";
+import "../../assets/stylesheet/header.css";
+import logo from "../../assets/images/logo.png";
+import {
+  EyeInvisibleOutlined,
+  EyeTwoTone,
+  KeyOutlined,
+  PhoneOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { useEffect, useState } from "react";
+import OtpInput from "react-otp-input";
+import callApi from "../../api/api";
+import HTTP_METHOD from "../../api/method";
+import { useDispatch } from "react-redux";
+import { setInformation } from "../../store/userInfor";
+export default function PopupLogin({ show, handleCancel }) {
+  const [form] = Form.useForm();
+  const checkRender = (visible) =>
+    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />;
+  const [textTitle, setTextTitle] = useState("ĐĂNG NHẬP");
+  const [value, setValue] = useState("");
+  const [component, setComponent] = useState("login");
+  const [checkEmail, setCheckEmail] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const Login = (
+    <>
+      <div className="formLogin">
+        <Form form={form} labelAlign="left">
+          <Form.Item
+            name="email"
+            labelCol={{ span: 6 }}
+            rules={
+              [
+                // { validator: () => validateEmail('username') }
+              ]
+            }
+          >
+            <Input
+              allowClear
+              size="large"
+              placeholder="nhập Email"
+              prefix={<UserOutlined />}
+            />
+          </Form.Item>
+          <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+            <Input.Password
+              size="large"
+              placeholder="nhập mật khẩu"
+              prefix={<KeyOutlined />}
+              iconRender={checkRender}
+            />
+          </Form.Item>
+        </Form>
+      </div>
+      {/* Ô remenberme */}
+      <div className="remenberme">
+        <Checkbox />
+        <span> Nhớ tài khoản</span>
+      </div>
+      <div class="butonLogin">
+        <button class="textLogin" onClick={actionLogin}>
+          Đăng nhập
+        </button>
+      </div>
+      <div className="forGotPassWord">
+        <span
+          className="textForGotPassWord"
+          onClick={() => actionNavigation("register")}
+        >
+          Đăng ký tài khoản
+        </span>
+        <span
+          className="textForGotPassWord"
+          onClick={() => actionNavigation("checkOtp")}
+        >
+          Quên mật khẩu
+        </span>
+      </div>
+    </>
+  );
+  const checkPassWord = (
+    <>
+      {/* Mật khẩu Đăng ký */}
+      <Form form={form} labelAlign="left">
+        <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+          <Input.Password
+            size="large"
+            placeholder="nhập mật khẩu"
+            prefix={<KeyOutlined />}
+            iconRender={checkRender}
+          />
+        </Form.Item>
+        <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+          <Input.Password
+            size="large"
+            placeholder="nhập lại mật khẩu"
+            prefix={<KeyOutlined />}
+            iconRender={checkRender}
+          />
+        </Form.Item>
+      </Form>
+      <div class="butonLogin">
+        <button class="textLogin" onClick={confirmPassWord}>
+          Xác nhận
+        </button>
+      </div>
+      <div className="forGotPassWord">
+        <span
+          className="textForGotPassWord"
+          onClick={() => actionNavigation("login")}
+        >
+          Quay lại đăng nhập
+        </span>
+      </div>
+    </>
+  );
+  const checkOtp = (
+    <>
+      {checkEmail ? (
+        <>
+          <Form form={form} labelAlign="left">
+            <Form.Item name="username" labelCol={{ span: 6 }}>
+              <Input
+                allowClear
+                size="large"
+                placeholder="nhập email đăng ký"
+                prefix={<UserOutlined />}
+              />
+            </Form.Item>
+          </Form>
+          <div class="butonLogin">
+            <button class="textLogin" onClick={() => confirmEmail()}>
+              Xác nhận
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <OtpInput
+            containerStyle={{
+              justifyContent: "center",
+            }}
+            className="otp"
+            inputStyle={{
+              width: "50px",
+              height: "50px",
+              fontSize: "2rem",
+              borderRadius: "10px",
+              border: "1px solid rgba(0, 0, 0, 0.3)",
+            }}
+            value={value}
+            onChange={(otp) => {
+              setValue(otp);
+            }}
+            numInputs={6}
+            separator={<span>-</span>}
+          />
+          <div class="butonLogin">
+            <button class="textLogin" onClick={() => confirmEmail(true)}>
+              Xác nhận
+            </button>
+          </div>
+        </>
+      )}
+      <div className="forGotPassWord">
+        <span
+          className="textForGotPassWord"
+          onClick={() => actionNavigation("login")}
+        >
+          Quay lại đăng nhập
+        </span>
+      </div>
+    </>
+  );
+  const register = (
+    <>
+      {/* Mật khẩu Đăng ký */}
+      <Form form={form} labelAlign="left">
+        <Form.Item name="fullName" labelCol={{ span: 6 }} rules={[{}]}>
+          <Input
+            size="large"
+            placeholder="tên đăng nhập"
+            prefix={<UserOutlined />}
+            iconRender={checkRender}
+          />
+        </Form.Item>
+        <Form.Item name="phone" labelCol={{ span: 6 }} rules={[{}]}>
+          <Input
+            size="large"
+            placeholder="số điện thoại"
+            prefix={<PhoneOutlined />}
+            iconRender={checkRender}
+          />
+        </Form.Item>
+        <Form.Item name="email" labelCol={{ span: 6 }} rules={[{}]}>
+          <Input
+            size="large"
+            placeholder="nhập email"
+            prefix={<UserOutlined />}
+            iconRender={checkRender}
+          />
+        </Form.Item>
+        <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+          <Input.Password
+            size="large"
+            placeholder="nhập mật khẩu"
+            prefix={<KeyOutlined />}
+            iconRender={checkRender}
+          />
+        </Form.Item>
+        <Form.Item name="rePassword" labelCol={{ span: 6 }} rules={[{}]}>
+          <Input.Password
+            size="large"
+            placeholder="nhập lại mật khẩu"
+            prefix={<KeyOutlined />}
+            iconRender={checkRender}
+          />
+        </Form.Item>
+      </Form>
+      <div class="butonLogin">
+        <button class="textLogin" onClick={actionRegister}>
+          Xác nhận
+        </button>
+      </div>
+      <div className="forGotPassWord">
+        <span
+          className="textForGotPassWord"
+          onClick={() => actionNavigation("login")}
+        >
+          Quay lại đăng nhập
+        </span>
+      </div>
+    </>
+  );
+  const componentRender = () => {
+    switch (component) {
+      case "login":
+        return Login;
+      case "checkOtp":
+        return checkOtp;
+      case "checkPassWord":
+        return checkPassWord;
+      case "register":
+        return register;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    setTextTitle("ĐĂNG NHẬP");
+    setValue("");
+    setComponent("login");
+    setCheckEmail(true);
+  }, [show]);
+  function actionLogin() {
+    const data = form.getFieldsValue(true);
+    setLoading(true);
+    callApi({
+      method: HTTP_METHOD.POST,
+      url: "api/login",
+      data: data,
+    }).then((res) => {
+      dispatch(setInformation(res));
+      setLoading(false);
+      handleCancel();
+    });
+  }
+  function actionNavigation(text) {
+    switch (text) {
+      case "login":
+        setTextTitle("ĐĂNG NHẬP");
+        break;
+      case "checkOtp":
+        setTextTitle("NHẬP EMAIL ĐĂNG KÝ");
+        break;
+      case "checkPassWord":
+        setTextTitle("NHẬP MẬT KHẨU");
+        break;
+      case "register":
+        setTextTitle("ĐĂNG KÝ");
+        break;
+      default:
+        break;
+    }
+    setComponent(text);
+  }
+  function confirmEmail(check) {
+    setLoading(true);
+    if (check) {
+      actionNavigation("checkPassWord");
+      callApi({
+        url: "/authentificationotp",
+        method: HTTP_METHOD.POST,
+        data: { email: form.getFieldValue("email"), otp: value },
+      }).then((res) => {
+        console.log(res);
+        setTextTitle("XÁC NHẬN OTP");
+        setCheckEmail(false);
+        setLoading(false);
+      });
+      setCheckEmail(true);
+    } else {
+      const email = form.getFieldValue("email");
+      callApi({
+        url: "/resetPasswordRequest",
+        method: HTTP_METHOD.POST,
+        params: { email },
+      }).then((res) => {
+        setTextTitle("XÁC NHẬN OTP");
+        setCheckEmail(false);
+        setLoading(false);
+      });
+    }
+  }
+  function confirmPassWord() {
+    setLoading(true);
+    callApi({
+      url: "/resetPassword",
+      method: HTTP_METHOD.POST,
+      data: {
+        newpassword: form.getFieldValue("password"),
+        email: form.getFieldValue("email"),
+        token: localStorage.getItem("token"),
+      },
+    }).then((res) => {
+      console.log(res);
+      setLoading(false);
+    });
+    setCheckEmail(true);
+  }
+  function actionRegister() {
+    const data = form.getFieldsValue(true);
+    callApi({
+      url: "api/register",
+      method: HTTP_METHOD.POST,
+      data: data,
+    }).then((res) => {
+      console.log(res);
+    });
+  }
+  return (
+    <Modal
+      open={show}
+      onCancel={handleCancel}
+      footer={[]}
+      loading={loading}
+      className="ModalClass"
+      bodyStyle={{
+        backgroundColor: "-webkit-linear-gradient(top, #7579ff, #b224ef)",
+      }}
+    >
+      <>
+        {/* Phần header */}
+        <div className="containerLogin">
+          <div className="Logo">
+            <img className="logoImg" src={logo} alt="Lỗi nha" />
+          </div>
+          <div className="titleModal">
+            <h2 className="textTiltle">{textTitle}</h2>
+          </div>
+          {componentRender()}
+        </div>
+      </>
+    </Modal>
+  );
+}
