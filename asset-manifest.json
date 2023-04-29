@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/caobenlly/doanfe/static/css/main.8dcfa1ed.css",
+    "main.js": "/caobenlly/doanfe/static/js/main.849ae1c1.js",
+    "static/media/logo.png": "/caobenlly/doanfe/static/media/logo.c9568a55cb64c07fb039.png",
+    "static/media/logo_1999sneaker.com.vn.png": "/caobenlly/doanfe/static/media/logo_1999sneaker.com.vn.630dda75866d0fb659e1.png",
+    "static/media/slick.svg": "/caobenlly/doanfe/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/caobenlly/doanfe/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/caobenlly/doanfe/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/caobenlly/doanfe/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/error.svg": "/caobenlly/doanfe/static/media/error.ad6ae80bf48f4c7c683790f5f557002d.svg",
+    "index.html": "/caobenlly/doanfe/index.html",
+    "static/media/green-check-icon.svg": "/caobenlly/doanfe/static/media/green-check-icon.e623e677c9c0e06e81f4cbeefaa04f0e.svg",
+    "main.8dcfa1ed.css.map": "/caobenlly/doanfe/static/css/main.8dcfa1ed.css.map",
+    "main.849ae1c1.js.map": "/caobenlly/doanfe/static/js/main.849ae1c1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8dcfa1ed.css",
+    "static/js/main.849ae1c1.js"
+  ]
+}
