@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.2d3a905a.css",
-    "main.js": "./static/js/main.2e139167.js",
+    "main.js": "./static/js/main.db7d2a6e.js",
     "static/media/logo.png": "./static/media/logo.c9568a55cb64c07fb039.png",
     "static/media/logo_1999sneaker.com.vn.png": "./static/media/logo_1999sneaker.com.vn.630dda75866d0fb659e1.png",
     "static/media/slick.svg": "./static/media/slick.2630a3e3eab21c607e21.svg",
@@ -12,10 +12,10 @@
     "index.html": "./index.html",
     "static/media/green-check-icon.svg": "./static/media/green-check-icon.e623e677c9c0e06e81f4cbeefaa04f0e.svg",
     "main.2d3a905a.css.map": "./static/css/main.2d3a905a.css.map",
-    "main.2e139167.js.map": "./static/js/main.2e139167.js.map"
+    "main.db7d2a6e.js.map": "./static/js/main.db7d2a6e.js.map"
   },
   "entrypoints": [
     "static/css/main.2d3a905a.css",
-    "static/js/main.2e139167.js"
+    "static/js/main.db7d2a6e.js"
   ]
 }
