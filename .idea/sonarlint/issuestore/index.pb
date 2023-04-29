@@ -10,8 +10,6 @@ O
 src/component/header/header.jsx,b\9\b9033409c929f0bd0ffbf7824fd52b5b7008f747
 U
 %src/component/header/immageHeader.jsx,b\8\b88c8130904ec4a139cb76b36636db8ff416af7c
-A
-src/api/method.js,2\0\20faf502911e4a33c47f016db0f779da7a08ca5c
 f
 6src/component/body/thongTinSanPham/thongtinSanPham.jsx,e\5\e5ada51e303bdef0d387120b73316f829a54df25
 <
