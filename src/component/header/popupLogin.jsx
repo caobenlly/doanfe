@@ -9,11 +9,12 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import OtpInput from "react-otp-input";
+import OtpInput from "react18-input-otp";
 import callApi from "../../api/api";
 import HTTP_METHOD from "../../api/method";
 import { useDispatch } from "react-redux";
 import { setInformation } from "../../store/userInfor";
+import { messageError, messageSuccess } from "../../assets/comonFc";
 export default function PopupLogin({ show, handleCancel }) {
   const [form] = Form.useForm();
   const checkRender = (visible) =>
@@ -22,6 +23,7 @@ export default function PopupLogin({ show, handleCancel }) {
   const [value, setValue] = useState("");
   const [component, setComponent] = useState("login");
   const [checkEmail, setCheckEmail] = useState(true);
+  const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const Login = (
@@ -109,7 +111,10 @@ export default function PopupLogin({ show, handleCancel }) {
       <div className="forGotPassWord">
         <span
           className="textForGotPassWord"
-          onClick={() => actionNavigation("login")}
+          onClick={() => {
+            setCheckEmail(true);
+            actionNavigation("login");
+          }}
         >
           Quay lại đăng nhập
         </span>
@@ -121,7 +126,7 @@ export default function PopupLogin({ show, handleCancel }) {
       {checkEmail ? (
         <>
           <Form form={form} labelAlign="left">
-            <Form.Item name="username" labelCol={{ span: 6 }}>
+            <Form.Item name="userName" labelCol={{ span: 6 }}>
               <Input
                 allowClear
                 size="large"
@@ -167,7 +172,10 @@ export default function PopupLogin({ show, handleCancel }) {
       <div className="forGotPassWord">
         <span
           className="textForGotPassWord"
-          onClick={() => actionNavigation("login")}
+          onClick={() => {
+            setCheckEmail(true);
+            actionNavigation("login");
+          }}
         >
           Quay lại đăng nhập
         </span>
@@ -227,7 +235,10 @@ export default function PopupLogin({ show, handleCancel }) {
       <div className="forGotPassWord">
         <span
           className="textForGotPassWord"
-          onClick={() => actionNavigation("login")}
+          onClick={() => {
+            setCheckEmail(true);
+            actionNavigation("login");
+          }}
         >
           Quay lại đăng nhập
         </span>
@@ -290,25 +301,33 @@ export default function PopupLogin({ show, handleCancel }) {
   function confirmEmail(check) {
     setLoading(true);
     if (check) {
-      actionNavigation("checkPassWord");
       callApi({
         url: "/authentificationotp",
         method: HTTP_METHOD.POST,
-        data: { email: form.getFieldValue("email"), otp: value },
+        data: { email: form.getFieldValue("userName"), otp: value },
       }).then((res) => {
-        console.log(res);
-        setTextTitle("XÁC NHẬN OTP");
-        setCheckEmail(false);
+        if (res.status) {
+          setCheckEmail(false);
+          return messageError(res.message);
+        }
+        setToken(res.token);
+        messageSuccess(res.message);
+        actionNavigation("checkPassWord");
         setLoading(false);
       });
       setCheckEmail(true);
     } else {
-      const email = form.getFieldValue("email");
+      const email = form.getFieldValue("userName");
       callApi({
         url: "/resetPasswordRequest",
         method: HTTP_METHOD.POST,
         params: { email },
       }).then((res) => {
+        if (res.status) {
+          messageError(res.message);
+          return;
+        }
+        messageSuccess(res.message);
         setTextTitle("XÁC NHẬN OTP");
         setCheckEmail(false);
         setLoading(false);
@@ -317,16 +336,21 @@ export default function PopupLogin({ show, handleCancel }) {
   }
   function confirmPassWord() {
     setLoading(true);
+    console.log(token);
     callApi({
       url: "/resetPassword",
       method: HTTP_METHOD.POST,
       data: {
         newpassword: form.getFieldValue("password"),
         email: form.getFieldValue("email"),
-        token: localStorage.getItem("token"),
+        token: token,
       },
     }).then((res) => {
-      console.log(res);
+      if (res.status) {
+        return messageError(res.message);
+      }
+      messageSuccess(`${res.message}, Vui lòng đăng nhập lại`);
+      actionNavigation("login");
       setLoading(false);
     });
     setCheckEmail(true);
@@ -338,9 +362,15 @@ export default function PopupLogin({ show, handleCancel }) {
       method: HTTP_METHOD.POST,
       data: data,
     }).then((res) => {
+      if (res.status) {
+        return messageError(res.message);
+      }
+      messageSuccess(`${res.message}, Vui lòng đăng nhập lại`);
+      actionNavigation("login");
       console.log(res);
     });
   }
+
   return (
     <Modal
       open={show}

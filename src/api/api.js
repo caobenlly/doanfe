@@ -5,7 +5,7 @@ export default function callApi(props) {
   const expiry_date = localStorage.getItem("expiry_date");
   const checkToken =
     (new Date(+expiry_date) - new Date()) / (1000 * 60 * 60 * 24);
-  if (checkToken <= 0) {
+  if (checkToken <= 0 && expiry_date) {
     apiAxios({
       url: "/refreshtoken",
       method: HTTP_METHOD.POST,

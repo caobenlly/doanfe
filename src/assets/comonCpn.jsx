@@ -1,7 +1,6 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Row } from "antd";
 
@@ -24,7 +23,7 @@ export const SimpleSlider = ({ listImg }) => {
 };
 
 export const SlideImages = (images) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const currentIndex = 0;
   const navigate = useNavigate();
   return (
     <div className="slider" style={{ display: "flex", alignItems: "center" }}>
@@ -44,7 +43,7 @@ export const SlideImages = (images) => {
             {images?.map((item, index) => (
               <div
                 className="box"
-                style={{ height: "100%", margin: "0 15px"}}
+                style={{ height: "100%", margin: "0 15px" }}
                 key={item}
               >
                 <div
@@ -57,7 +56,11 @@ export const SlideImages = (images) => {
                   <img
                     src={item.images}
                     alt="lỗi"
-                    style={{ width: "200px", height: "300px", borderRadius:"20px"}}
+                    style={{
+                      width: "200px",
+                      height: "300px",
+                      borderRadius: "20px",
+                    }}
                   />
                 </div>
                 <div className="titleSp" style={{ maxWidth: "200px" }}>
