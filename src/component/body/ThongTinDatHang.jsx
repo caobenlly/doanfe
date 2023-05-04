@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { List, Modal, Tabs } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import callApi from "../../api/api";
 import HTTP_METHOD from "../../api/method";
-import { useState } from "react";
 import { messageError, messageSuccess } from "../../assets/comonFc";
 
 function ModalChiTiet({ show, closePreview, id }) {
@@ -48,16 +47,27 @@ function ModalChiTiet({ show, closePreview, id }) {
             </div>
             <img style={{ width: "200px", height: "200px" }} src={img} alt="" />
           </div>
-          <div style={{marginTop: '40px'}}>
+          <div style={{ marginTop: "40px" }}>
             <div>
-              <b>sizeVn:</b> {data.sizeVn} | <b>sizeUs:</b>{data.sizeUs} | <b>sizeCm:</b>
+              <b>sizeVn:</b> {data.sizeVn} | <b>sizeUs:</b>
+              {data.sizeUs} | <b>sizeCm:</b>
               {data.sizeUs}
             </div>
-            <div className="titleOder"><b>Giá:</b> {data.totalPrice}</div>
-            <div className="titleOder"><b>Tên Người Nhận:</b> {data.receiverName}</div>
-            <div className="titleOder"><b>SĐT:</b> {data.receiverPhone}</div>
-            <div className="titleOder"><b>Địa Chỉ:</b> {data.receiverAddress}</div>
-            <div className="titleOder"><b>Tình trạng thái:</b> {data.statusText}</div>
+            <div className="titleOder">
+              <b>Giá:</b> {data.totalPrice}
+            </div>
+            <div className="titleOder">
+              <b>Tên Người Nhận:</b> {data.receiverName}
+            </div>
+            <div className="titleOder">
+              <b>SĐT:</b> {data.receiverPhone}
+            </div>
+            <div className="titleOder">
+              <b>Địa Chỉ:</b> {data.receiverAddress}
+            </div>
+            <div className="titleOder">
+              <b>Tình trạng thái:</b> {data.statusText}
+            </div>
           </div>
           <div style={{}}>
             <button
@@ -69,7 +79,7 @@ function ModalChiTiet({ show, closePreview, id }) {
                 outline: "none",
                 color: "white",
                 height: "50px",
-                marginTop: '170px'
+                marginTop: "170px",
               }}
             >
               Hủy đơn hàng

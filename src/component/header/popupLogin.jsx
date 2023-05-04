@@ -33,11 +33,6 @@ export default function PopupLogin({ show, handleCancel }) {
           <Form.Item
             name="email"
             labelCol={{ span: 6 }}
-            rules={
-              [
-                // { validator: () => validateEmail('username') }
-              ]
-            }
           >
             <Input
               allowClear
@@ -274,6 +269,10 @@ export default function PopupLogin({ show, handleCancel }) {
       url: "api/login",
       data: data,
     }).then((res) => {
+      if (res.status) {
+        return messageError(res.message);
+      }
+      messageSuccess(res.message);
       dispatch(setInformation(res));
       setLoading(false);
       handleCancel();

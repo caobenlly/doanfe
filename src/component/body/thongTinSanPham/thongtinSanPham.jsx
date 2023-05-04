@@ -145,15 +145,16 @@ export default function ThongtinSp() {
     });
   }, [id]);
   function handleFeedbak() {
+    const fileEdit = file.map((i) => i.src);
     if (!infor.id) {
       messageError("Vui lòng đăng nhập để sử dụng");
       return;
     }
     const data = file.map((i) => i.src);
     callApi({
-      url: `/api/admin/products/${id}/update-feedback-image`,
+      url: `/api/products/${id}/update-feedback-image`,
       method: HTTP_METHOD.PUT,
-      data: { feedback_images: [...fileView, ...data] },
+      data: { feedback_images: [...fileEdit, ...data] },
     });
   }
   function handelComment() {
@@ -181,11 +182,7 @@ export default function ThongtinSp() {
       url: `/home/listcomment/${id}`,
       method: HTTP_METHOD.GET,
     }).then((res) => {
-      const dataNew = [];
-      for (const prop in res) {
-        dataNew.push({ user: prop, content: res[prop] });
-      }
-      setListValueComment(dataNew);
+      setListValueComment(res.Listcomment);
     });
   }
   const [listValueComment, setListValueComment] = useState([]);
@@ -370,7 +367,14 @@ export default function ThongtinSp() {
         }}
         dataSource={listItem}
         renderItem={(item) => (
-          <List.Item style={{ height: "100px", width: "150px", padding: "0" }}>
+          <List.Item
+            style={{
+              height: "100px",
+              width: "150px",
+              padding: "0",
+              minWidth: "150px",
+            }}
+          >
             <div
               style={{
                 height: "100px",
@@ -410,7 +414,8 @@ export default function ThongtinSp() {
         <div className="imgSanPham">
           <div className="dataSanPham">
             <img
-              style={{ width: "100%", height: "100%", borderRadius: '20px' }}
+              className="imgZoom"
+              style={{ width: "100%", height: "100%", borderRadius: "20px" }}
               src={imgView}
               alt="lỗi"
             />

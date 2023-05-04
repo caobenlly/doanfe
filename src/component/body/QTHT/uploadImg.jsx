@@ -1,10 +1,9 @@
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Modal, Table } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { cloneDeep } from "lodash";
 import axios from "axios";
 import { messageError } from "../../../assets/comonFc";
-import { useEffect } from "react";
 
 function ImageUpload({ show, closePreview, dataFile, max = 4 }) {
   const [files, setFiles] = useState([]);
@@ -12,8 +11,8 @@ function ImageUpload({ show, closePreview, dataFile, max = 4 }) {
   const [selectedRow, setSelectedRow] = useState([]);
   useEffect(() => {
     setFiles([]);
-    setSelectedRowKeys([])
-    setSelectedRow([])
+    setSelectedRowKeys([]);
+    setSelectedRow([]);
   }, []);
   const handleFileChange = (e) => {
     const fileList = Array.from(e.target.files);

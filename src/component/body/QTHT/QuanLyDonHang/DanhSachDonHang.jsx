@@ -1,19 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { Pagination, Table, Select } from "antd";
-import { useState } from "react";
-import { converDate } from "../../../../assets/comonFc";
-import { useEffect } from "react";
+import { Pagination, Table, Select, Modal } from "antd";
+import { useState, useEffect } from "react";
+import { converDate, messageSuccess } from "../../../../assets/comonFc";
 import callApi from "../../../../api/api";
 import HTTP_METHOD from "../../../../api/method";
 import { cloneDeep } from "lodash";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import {  Modal } from "antd";
-import {  messageSuccess } from "../../../../assets/comonFc";
 
-function ModalEdit({ dataEdit, searchData, showModalEdit, closeModalEdit, getData }) {
-  const [ setName] = useState("");
-  const [ setStatus] = useState(false);
+function ModalEdit({
+  dataEdit,
+  searchData,
+  showModalEdit,
+  closeModalEdit,
+  getData,
+}) {
+  const [setName] = useState("");
+  const [setStatus] = useState(false);
   const [id, setId] = useState();
   const [trangThai, setTrangThai] = useState();
   const optionOrder = [
@@ -43,7 +46,7 @@ function ModalEdit({ dataEdit, searchData, showModalEdit, closeModalEdit, getDat
       setName(dataEdit.name);
       setStatus(dataEdit.status);
       setId(dataEdit.id);
-      setTrangThai(dataEdit.trangThai)
+      setTrangThai(dataEdit.trangThai);
     }
     console.log("dataEdit", dataEdit);
   }, [dataEdit, showModalEdit]);
@@ -51,17 +54,17 @@ function ModalEdit({ dataEdit, searchData, showModalEdit, closeModalEdit, getDat
   function setData() {
     console.log(trangThai, "trangThai");
     callApi({
-      url:`/api/admin/orders/update-detail/${id}?trangThai=${trangThai}`,
+      url: `/api/admin/orders/update-detail/${id}?trangThai=${trangThai}`,
       method: HTTP_METHOD.PUT,
     }).then((res) => {
-      messageSuccess("Cập nhật thành công")
-      getData()
+      messageSuccess("Cập nhật thành công");
+      getData();
       closeModalEdit();
     });
   }
   function handleChangeOrderStatus(e) {
     console.log(e);
-    setTrangThai(e)
+    setTrangThai(e);
   }
   return (
     <Modal
@@ -71,7 +74,7 @@ function ModalEdit({ dataEdit, searchData, showModalEdit, closeModalEdit, getDat
       title="Sửa đơn hàng"
     >
       <Select
-        style={{ width: '100%' }}
+        style={{ width: "100%" }}
         options={optionOrder}
         onChange={(e) => handleChangeOrderStatus(e)}
       />

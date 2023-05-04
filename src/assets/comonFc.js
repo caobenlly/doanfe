@@ -33,10 +33,6 @@ export const messageSuccess = (text) => {
   });
 };
 
-export function Navigate(path) {
-
-}
-
 export const handleFileChange = (e) => {
   return URL.createObjectURL(e.target.files);
 };
