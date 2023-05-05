@@ -74,14 +74,7 @@ export default function ImmageHeader() {
         <div style={{ flex: 1 }}>
           <img className="logoImg" src={logo} alt="Đang lỗi" />
         </div>
-        <div style={{ flex: 2, padding: "30px" }}>
-          <Input.Search
-            size="large"
-            allowClear
-            style={{ width: "100%" }}
-            placeholder="Nhập thông tin bạn muốn tìm kiếm"
-          />
-        </div>
+        <div style={{ flex: 2, padding: "30px" }}></div>
         <div style={{ flex: 1, textAlign: "center" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="iconPhone">
