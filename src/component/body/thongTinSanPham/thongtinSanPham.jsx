@@ -284,7 +284,7 @@ export default function ThongtinSp() {
               margin: "35px 10px",
             }}
           >
-            {listValueComment.map((i) => (
+            {listValueComment?.map((i) => (
               <div
                 className="commen"
                 style={{ display: "flex", margin: "5px", fontSize: "14px" }}

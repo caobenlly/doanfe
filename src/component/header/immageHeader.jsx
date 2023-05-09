@@ -4,7 +4,7 @@ import {
   UserOutlined,
   WechatFilled,
 } from "@ant-design/icons";
-import { Dropdown, Input, Menu } from "antd";
+import { Dropdown, Menu } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";

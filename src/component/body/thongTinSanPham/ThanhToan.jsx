@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { CaretDownOutlined } from "@ant-design/icons";
-import { Form, Input, InputNumber, Modal } from "antd";
+import { Button, Form, Input, InputNumber, Modal, Popover } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import HTTP_METHOD from "../../../api/method";
 import { messageError, messageSuccess } from "../../../assets/comonFc";
 import { useNavigate } from "react-router-dom";
-
+import imgBank from "../../../assets/images/140244ncbbank.jpg";
 export default function CheckoutForm({
   show,
   closeModal,
@@ -76,9 +76,37 @@ export default function CheckoutForm({
       });
     });
   }
+  function handleBank() {
+    console.log(data);
+    form.validateFields().then((res) => {
+      if (res?.errorFields?.length > 0) {
+        return;
+      }
+      callApi({
+        url: `/api/thanhtoan?bankcode=NCB&amount=${
+          data.price - discount
+        }&vnp_OrderInfo=${data.name}`,
+        method: HTTP_METHOD.POST,
+      }).then((res) => {
+        window.location.href = res.data;
+      });
+    });
+  }
+  const content = (
+    <div>
+      <span onClick={handleBank}>
+        <img src={imgBank} alt="" style={{ height: "30px", width: "100px" }} />{" "}
+      </span>
+    </div>
+  );
   return (
     <>
-      <Modal width={1500} open={show} onCancel={closeModal} onOk={handleBuy}>
+      <Modal
+        width={1500}
+        open={show}
+        onCancel={closeModal}
+        footer={[<Button onClick={closeModal}>Thoát</Button>]}
+      >
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ minWidth: "500px" }} className="thongtinnguoinhan">
             <div
@@ -172,6 +200,16 @@ export default function CheckoutForm({
                     />
                   </Form.Item>
                 </Form>
+                <div>
+                  <Popover placement="bottom" content={content} trigger="hover">
+                    <Button type="primary">Thanh toán online</Button>
+                  </Popover>
+                  ,
+                  <Button type="primary" onClick={handleBuy}>
+                    Thanh toán tiền mặt
+                  </Button>
+                  ,
+                </div>
               </div>
             </div>
           </div>
