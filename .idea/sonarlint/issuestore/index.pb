@@ -10,11 +10,12 @@ O
 src/component/header/header.jsx,b\9\b9033409c929f0bd0ffbf7824fd52b5b7008f747
 U
 %src/component/header/immageHeader.jsx,b\8\b88c8130904ec4a139cb76b36636db8ff416af7c
-f
-6src/component/body/thongTinSanPham/thongtinSanPham.jsx,e\5\e5ada51e303bdef0d387120b73316f829a54df25
 <
 src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 S
 #src/component/header/popupLogin.jsx,0\d\0d80e69a278884d5cea5f885d2925a71ec3c3f2e
 >
 src/api/api.js,c\4\c4b5cc6e5316f0a41e5380b9c170bcfd1835974b
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

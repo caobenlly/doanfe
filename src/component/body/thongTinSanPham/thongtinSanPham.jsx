@@ -171,7 +171,7 @@ export default function ThongtinSp() {
       },
     }).then((res) => {
       if (res.message) {
-        messageError(res.message);
+        messageError(res?.message);
         return;
       }
       getApiComment();
@@ -182,7 +182,7 @@ export default function ThongtinSp() {
       url: `/home/listcomment/${id}`,
       method: HTTP_METHOD.GET,
     }).then((res) => {
-      setListValueComment(res.Listcomment);
+      setListValueComment(res?.Listcomment);
     });
   }
   const [listValueComment, setListValueComment] = useState([]);
@@ -281,7 +281,7 @@ export default function ThongtinSp() {
             style={{
               border: "1px solid #dddddd",
               width: "600px",
-              margin: "35px 10px",
+              margin: "35px 10px", overflow:"auto"
             }}
           >
             {listValueComment?.map((i) => (

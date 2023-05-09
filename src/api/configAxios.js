@@ -1,6 +1,6 @@
 import axios from "axios";
 const apiAxios = axios.create({
-  baseURL: "https://webshoesdoanversion1.herokuapp.com",
+  baseURL: "http://localhost:8084",
 });
 apiAxios.defaults.headers.common["Content-Type"] = "application/json";
 apiAxios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
