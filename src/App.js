@@ -13,6 +13,7 @@ import ThanhToan from "./component/body/thongTinSanPham/ThanhToan";
 import ChiTiet from "./component/body/ChiTietTinTuc";
 import ThongTinUser from "./component/body/ThonTinUser";
 import LichSuDatHang from "./component/body/ThongTinDatHang";
+import ThanhToanThanhCong from "./component/body/thanhToanThanhCong";
 
 export default function App() {
   const location = useLocation();
@@ -54,6 +55,7 @@ export default function App() {
               <Route path="/ChinhSach" element={<ChinhSach />} />
               <Route path="/LienHe" element={<LienHe />} />
               <Route path="/ThanhToan" element={<ThanhToan />} />
+              <Route path="/ThanhToanThanhCong" element={<ThanhToanThanhCong />} />
             </Routes>
             <div className="site-layout-content"></div>
           </Layout.Content>

@@ -27,7 +27,12 @@ export default function ComponentFooter() {
       className: "footerSup",
     },
   ];
-  const dataCenter = ["Trang chủ", "Sản phẩm", "Tin tức", "Liên hệ"];
+  const dataCenter = [
+    { key: "/", value: "Trang chủ" },
+    { key: "/SanPham", value: "Sản phẩm" },
+    { key: "/TinTuc", value: "Tin tức" },
+    { key: "/LienHe", value: "Liên hệ" },
+  ];
   const dataRight = ["Hướng dẫn mua hàng", "Chính sách đổi trả & hoàn tiền"];
   const styleIcon = {
     height: "40px",
@@ -41,7 +46,7 @@ export default function ComponentFooter() {
     borderRadius: "50%",
   };
   return (
-    <div style={{ backgroundColor: "#222529", marginTop: '50px' }}>
+    <div style={{ backgroundColor: "#222529", marginTop: "50px" }}>
       <div className="footerBox">
         <div className="footerLeft">
           <h2 className="titleFooter">VỀ CỬA HÀNG</h2>
@@ -61,9 +66,9 @@ export default function ComponentFooter() {
           <h2 className="titleFooter">THÔNG TIN</h2>
           {dataCenter.map((item) => (
             <div key={item} className="inforFooter">
-              <a href="item" className="textSup">
+              <a href={item.key} className="textSup">
                 {" "}
-                &gt;{item}
+                &gt;{item.value}
               </a>
             </div>
           ))}
@@ -72,7 +77,7 @@ export default function ComponentFooter() {
           <h2 className="titleFooter">HUỚNG DẪN & CHÍNH SÁCH</h2>
           {dataRight.map((item) => (
             <div key={item} className="inforFooter">
-              <a href="item" className="textSup">
+              <a href="/Chinhsach" className="textSup">
                 {" "}
                 &gt;{item}
               </a>
