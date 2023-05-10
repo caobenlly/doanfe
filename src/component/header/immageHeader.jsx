@@ -107,7 +107,6 @@ export default function ImmageHeader() {
             }}
           >
             <div className="chatIcon">
-              <WechatFilled style={{ fontSize: "35px", marginRight: "22px" }} />
             </div>
             <div
               className="carIcon"
