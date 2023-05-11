@@ -73,7 +73,9 @@ export default function ThemMoiKhuyenMai() {
   return (
     <div style={{ background: "white", padding: "15px" }}>
       <div className="titleTable" style={{ marginBottom: 20 }}>
-        <b style={{ fontSize: "17px" }}>Danh sách danh mục</b>
+        <b style={{ fontSize: "17px" }}>
+          {id ? "Cập nhật khuyễn mãi" : "Thêm mới khuyến mãi"}
+        </b>
       </div>
       <div className="listThaotac">
         <Button

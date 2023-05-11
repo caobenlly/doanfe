@@ -192,7 +192,7 @@ export default function ThongtinSp() {
       label: "Mô Tả Chi Tiết Sản Phẩm",
       children: (
         <CKEditorTable
-          value={data.description}
+          value={data?.description}
           setValue={(e) => console.log(e)}
           isChiTiet={true}
         />
@@ -420,7 +420,7 @@ export default function ThongtinSp() {
               alt="lỗi"
             />
           </div>
-          <div className="listCustom">{listCustom(data.productImages)}</div>
+          <div className="listCustom">{listCustom(data?.productImages)}</div>
         </div>
         <div className="inforSanPham">
           <div className="titleSanPham">{data.name}</div>

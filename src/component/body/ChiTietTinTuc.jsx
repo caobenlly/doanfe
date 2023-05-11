@@ -44,7 +44,7 @@ export default function ChiTiet() {
         <br />
         <CKEditorTable
           setValue={false}
-          value={data.description}
+          value={data?.description}
           isChiTiet={true}
         />
       </div>

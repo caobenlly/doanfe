@@ -63,7 +63,9 @@ export default function ThemMoiBaiViet() {
     <>
       <div style={{ background: "white", padding: "15px" }}>
         <div className="titleTable" style={{ marginBottom: 20 }}>
-          <b style={{ fontSize: "17px" }}>Danh sách danh mục</b>
+          <b style={{ fontSize: "17px" }}>
+            {id ? "Cập nhật bài viết" : "Thêm mới bài viết"}
+          </b>
         </div>
         <div className="listThaotac">
           <Button
@@ -75,7 +77,7 @@ export default function ThemMoiBaiViet() {
             icon={<PlusOutlined />}
             onClick={handelSave}
           >
-            Thêm mới bài viết
+            {id ? "Cập nhật bài viết" : "Thêm mới bài viết"}
           </Button>
         </div>
         <div className="containerContent">

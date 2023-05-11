@@ -122,7 +122,9 @@ export default function ThemMoiSanPham() {
         style={{ background: "white", padding: "15px", marginBottom: "20px" }}
       >
         <div className="titleTable" style={{ marginBottom: 20 }}>
-          <b style={{ fontSize: "17px" }}>Danh sách danh mục</b>
+          <b style={{ fontSize: "17px" }}>
+            {id ? "Cập nhật sản phẩm" : "Thêm mới sản phẩm"}
+          </b>
         </div>
         <div className="listThaotac">
           <Button
@@ -134,7 +136,7 @@ export default function ThemMoiSanPham() {
             icon={<PlusOutlined />}
             onClick={handelSave}
           >
-            Thêm mới danh mục
+            {id ? "Cập nhật sản phẩm" : "Thêm mới sản phẩm"}
           </Button>
         </div>
         <div className="containerContent">
@@ -171,15 +173,7 @@ export default function ThemMoiSanPham() {
           <div className="tableInfo">
             <Form form={form}>
               <div>Trạng thái :</div>
-              <Form.Item
-                name="status"
-                rules={[
-                  {
-                    required: true,
-                    message: "Vui lòng nhập",
-                  },
-                ]}
-              >
+              <Form.Item name="status">
                 <Select
                   defaultValue={1}
                   options={[
@@ -258,6 +252,72 @@ export default function ThemMoiSanPham() {
               <div>Giá bán ra của sản phẩm (VNĐ) :</div>
               <Form.Item
                 name="salePrice"
+                rules={[
+                  {
+                    required: true,
+                    message: "Vui lòng nhập",
+                  },
+                ]}
+              >
+                <InputNumber
+                  style={{
+                    width: "100%",
+                  }}
+                  controls={false}
+                />
+              </Form.Item>
+              <div>Size :</div>
+              <Form.Item
+                name="listSize"
+                rules={[
+                  {
+                    required: true,
+                    message: "Vui lòng nhập",
+                  },
+                ]}
+              >
+                <Select
+                  mode="multiple"
+                  allowClear
+                  options={[
+                    {
+                      label: "35",
+                      value: 35,
+                    },
+                    {
+                      label: "36",
+                      value: 36,
+                    },
+                    {
+                      label: "37",
+                      value: 37,
+                    },
+                    {
+                      label: "38",
+                      value: 38,
+                    },
+                    {
+                      label: "39",
+                      value: 39,
+                    },
+                    {
+                      label: "40",
+                      value: 40,
+                    },
+                    {
+                      label: "41",
+                      value: 41,
+                    },
+                    {
+                      label: "42",
+                      value: 42,
+                    },
+                  ]}
+                />
+              </Form.Item>
+              <div>Số lượng:</div>
+              <Form.Item
+                name="quantity"
                 rules={[
                   {
                     required: true,

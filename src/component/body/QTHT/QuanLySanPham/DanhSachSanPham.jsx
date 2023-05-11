@@ -181,7 +181,7 @@ export default function DanhSachDonHang() {
     <>
       <div style={{ background: "white", padding: "15px" }}>
         <div className="titleTable" style={{ marginBottom: 20 }}>
-          <b style={{ fontSize: "17px" }}>Danh sách danh mục</b>
+          <b style={{ fontSize: "17px" }}>Danh sách sản phẩm</b>
         </div>
         <div className="listThaotac">
           <Button
