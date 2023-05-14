@@ -76,7 +76,7 @@ export default function ImmageHeader() {
         </div>
         <div style={{ flex: 2, padding: "30px" }}></div>
         <div style={{ flex: 1, textAlign: "center" }}>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <div className="iconPhone">
               <PhoneOutlined style={{ fontSize: "35px" }} />
             </div>
@@ -106,8 +106,7 @@ export default function ImmageHeader() {
               justifyContent: "flex-end",
             }}
           >
-            <div className="chatIcon">
-            </div>
+            <div className="chatIcon"></div>
             <div
               className="carIcon"
               style={{ cursor: "pointer" }}
