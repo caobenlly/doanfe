@@ -33,6 +33,12 @@ export default function PopupLogin({ show, handleCancel }) {
           <Form.Item
             name="email"
             labelCol={{ span: 6 }}
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập",
+              },
+            ]}
           >
             <Input
               allowClear
@@ -41,7 +47,16 @@ export default function PopupLogin({ show, handleCancel }) {
               prefix={<UserOutlined />}
             />
           </Form.Item>
-          <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+          <Form.Item
+            name="password"
+            labelCol={{ span: 6 }}
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập",
+              },
+            ]}
+          >
             <Input.Password
               size="large"
               placeholder="nhập mật khẩu"
@@ -81,7 +96,16 @@ export default function PopupLogin({ show, handleCancel }) {
     <>
       {/* Mật khẩu Đăng ký */}
       <Form form={form} labelAlign="left">
-        <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+        <Form.Item
+          name="password"
+          labelCol={{ span: 6 }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập",
+            },
+          ]}
+        >
           <Input.Password
             size="large"
             placeholder="nhập mật khẩu"
@@ -89,7 +113,16 @@ export default function PopupLogin({ show, handleCancel }) {
             iconRender={checkRender}
           />
         </Form.Item>
-        <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+        <Form.Item
+          name="password"
+          labelCol={{ span: 6 }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập",
+            },
+          ]}
+        >
           <Input.Password
             size="large"
             placeholder="nhập lại mật khẩu"
@@ -121,7 +154,16 @@ export default function PopupLogin({ show, handleCancel }) {
       {checkEmail ? (
         <>
           <Form form={form} labelAlign="left">
-            <Form.Item name="userName" labelCol={{ span: 6 }}>
+            <Form.Item
+              name="userName"
+              labelCol={{ span: 6 }}
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng nhập",
+                },
+              ]}
+            >
               <Input
                 allowClear
                 size="large"
@@ -181,7 +223,16 @@ export default function PopupLogin({ show, handleCancel }) {
     <>
       {/* Mật khẩu Đăng ký */}
       <Form form={form} labelAlign="left">
-        <Form.Item name="fullName" labelCol={{ span: 6 }} rules={[{}]}>
+        <Form.Item
+          name="fullName"
+          labelCol={{ span: 6 }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập",
+            },
+          ]}
+        >
           <Input
             size="large"
             placeholder="tên đăng nhập"
@@ -189,7 +240,16 @@ export default function PopupLogin({ show, handleCancel }) {
             iconRender={checkRender}
           />
         </Form.Item>
-        <Form.Item name="phone" labelCol={{ span: 6 }} rules={[{}]}>
+        <Form.Item
+          name="phone"
+          labelCol={{ span: 6 }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập",
+            },
+          ]}
+        >
           <Input
             size="large"
             placeholder="số điện thoại"
@@ -197,7 +257,16 @@ export default function PopupLogin({ show, handleCancel }) {
             iconRender={checkRender}
           />
         </Form.Item>
-        <Form.Item name="email" labelCol={{ span: 6 }} rules={[{}]}>
+        <Form.Item
+          name="email"
+          labelCol={{ span: 6 }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập",
+            },
+          ]}
+        >
           <Input
             size="large"
             placeholder="nhập email"
@@ -205,7 +274,16 @@ export default function PopupLogin({ show, handleCancel }) {
             iconRender={checkRender}
           />
         </Form.Item>
-        <Form.Item name="password" labelCol={{ span: 6 }} rules={[{}]}>
+        <Form.Item
+          name="password"
+          labelCol={{ span: 6 }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập",
+            },
+          ]}
+        >
           <Input.Password
             size="large"
             placeholder="nhập mật khẩu"
@@ -213,7 +291,16 @@ export default function PopupLogin({ show, handleCancel }) {
             iconRender={checkRender}
           />
         </Form.Item>
-        <Form.Item name="rePassword" labelCol={{ span: 6 }} rules={[{}]}>
+        <Form.Item
+          name="rePassword"
+          labelCol={{ span: 6 }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập",
+            },
+          ]}
+        >
           <Input.Password
             size="large"
             placeholder="nhập lại mật khẩu"
@@ -263,19 +350,24 @@ export default function PopupLogin({ show, handleCancel }) {
   }, [show]);
   function actionLogin() {
     const data = form.getFieldsValue(true);
-    setLoading(true);
-    callApi({
-      method: HTTP_METHOD.POST,
-      url: "api/login",
-      data: data,
-    }).then((res) => {
-      if (res.status) {
-        return messageError(res.message);
+    form.validateFields().then((res) => {
+      if (res?.errorFields?.length > 0) {
+        return;
       }
-      messageSuccess(res.message);
-      dispatch(setInformation(res));
-      setLoading(false);
-      handleCancel();
+      setLoading(true);
+      callApi({
+        method: HTTP_METHOD.POST,
+        url: "api/login",
+        data: data,
+      }).then((res) => {
+        if (res.status) {
+          return messageError(res.message);
+        }
+        messageSuccess(res.message);
+        dispatch(setInformation(res));
+        setLoading(false);
+        handleCancel();
+      });
     });
   }
   function actionNavigation(text) {
@@ -316,57 +408,71 @@ export default function PopupLogin({ show, handleCancel }) {
       });
       setCheckEmail(true);
     } else {
-      const email = form.getFieldValue("userName");
-      callApi({
-        url: "/resetPasswordRequest",
-        method: HTTP_METHOD.POST,
-        params: { email },
-      }).then((res) => {
-        if (res.status) {
-          messageError(res.message);
+      form.validateFields().then((res) => {
+        if (res?.errorFields?.length > 0) {
           return;
         }
-        messageSuccess(res.message);
-        setTextTitle("XÁC NHẬN OTP");
-        setCheckEmail(false);
-        setLoading(false);
+        const email = form.getFieldValue("userName");
+        callApi({
+          url: "/resetPasswordRequest",
+          method: HTTP_METHOD.POST,
+          params: { email },
+        }).then((res) => {
+          if (res.status) {
+            messageError(res.message);
+            return;
+          }
+          messageSuccess(res.message);
+          setTextTitle("XÁC NHẬN OTP");
+          setCheckEmail(false);
+          setLoading(false);
+        });
       });
     }
   }
   function confirmPassWord() {
     setLoading(true);
-    console.log(token);
-    callApi({
-      url: "/resetPassword",
-      method: HTTP_METHOD.POST,
-      data: {
-        newpassword: form.getFieldValue("password"),
-        email: form.getFieldValue("email"),
-        token: token,
-      },
-    }).then((res) => {
-      if (res.status) {
-        return messageError(res.message);
+    form.validateFields().then((res) => {
+      if (res?.errorFields?.length > 0) {
+        return;
       }
-      messageSuccess(`${res.message}, Vui lòng đăng nhập lại`);
-      actionNavigation("login");
-      setLoading(false);
+      callApi({
+        url: "/resetPassword",
+        method: HTTP_METHOD.POST,
+        data: {
+          newpassword: form.getFieldValue("password"),
+          email: form.getFieldValue("email"),
+          token: token,
+        },
+      }).then((res) => {
+        if (res.status) {
+          return messageError(res.message);
+        }
+        messageSuccess(`${res.message}, Vui lòng đăng nhập lại`);
+        actionNavigation("login");
+        setLoading(false);
+      });
+      setCheckEmail(true);
     });
-    setCheckEmail(true);
   }
   function actionRegister() {
     const data = form.getFieldsValue(true);
-    callApi({
-      url: "api/register",
-      method: HTTP_METHOD.POST,
-      data: data,
-    }).then((res) => {
-      if (res.status) {
-        return messageError(res.message);
+    form.validateFields().then((res) => {
+      if (res?.errorFields?.length > 0) {
+        return;
       }
-      messageSuccess(`${res.message}, Vui lòng đăng nhập lại`);
-      actionNavigation("login");
-      console.log(res);
+      callApi({
+        url: "api/register",
+        method: HTTP_METHOD.POST,
+        data: data,
+      }).then((res) => {
+        if (res.status) {
+          return messageError(res.message);
+        }
+        messageSuccess(`${res.message}, Vui lòng đăng nhập lại`);
+        actionNavigation("login");
+        console.log(res);
+      });
     });
   }
 
