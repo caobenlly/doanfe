@@ -88,6 +88,8 @@ export default function CheckoutForm({
         }&vnp_OrderInfo=${data.name}`,
         method: HTTP_METHOD.POST,
       }).then((res) => {
+        console.log(res)
+        debugger
         window.location.href = res.data;
       });
     });
@@ -263,9 +265,9 @@ export default function CheckoutForm({
                   đ
                 </div>
                 <Search
-                  placeholder="input search text"
+                  placeholder="Nhập mã khuyến mại"
                   allowClear
-                  enterButton="Search"
+                  enterButton="Tìm kiếm"
                   size="large"
                   onSearch={onSearch}
                 />

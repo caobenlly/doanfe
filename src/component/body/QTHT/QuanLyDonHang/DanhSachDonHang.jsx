@@ -15,8 +15,6 @@ function ModalEdit({
   closeModalEdit,
   getData,
 }) {
-  const [setName] = useState("");
-  const [setStatus] = useState(false);
   const [id, setId] = useState();
   const [trangThai, setTrangThai] = useState();
   const optionOrder = [
@@ -43,8 +41,6 @@ function ModalEdit({
   ];
   useEffect(() => {
     if (showModalEdit) {
-      setName(dataEdit.name);
-      setStatus(dataEdit.status);
       setId(dataEdit.id);
       setTrangThai(dataEdit.trangThai);
     }
@@ -173,20 +169,22 @@ export default function DanhSachDonHang() {
       title: "Thao tác",
       dataIndex: "statusDm",
       key: "statusDm",
-      render: (value, row, index) => (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <span style={{ cursor: "pointer" }}>
-            <EditOutlined onClick={() => openModalEdit(row)} />
+      render: (value, row, index) => {
+        console.log('row', row)
+        return (
+            <div style={{display: "flex", justifyContent: "center"}}>
+          <span style={{cursor: "pointer"}}>
+            <EditOutlined onClick={() => openModalEdit(row)}/>
           </span>
-          <span style={{ width: "20px" }}></span>
-          <span
-            style={{ cursor: "pointer" }}
-            onClick={() => handleDelete(row.id)}
-          >
-            <DeleteOutlined />
+              <span style={{width: "20px"}}></span>
+              <span
+                  style={{cursor: "pointer"}}
+                  onClick={() => handleDelete(row.id)}
+              >
+            <DeleteOutlined/>
           </span>
-        </div>
-      ),
+            </div>)
+      },
     },
   ];
   function openModalEdit(row) {

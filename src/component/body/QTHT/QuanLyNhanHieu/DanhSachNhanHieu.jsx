@@ -29,7 +29,7 @@ function ModalEdit({ getData, showModalEdit, closeModalEdit, dataEdit }) {
       method: id ? HTTP_METHOD.PUT : HTTP_METHOD.POST,
       data,
     }).then((res) => {
-      if (res.message) {
+      if (res.status) {
         messageError(res.message);
       } else {
         messageSuccess(id ? "Cập nhật thành công" : "Thêm mới thành công");

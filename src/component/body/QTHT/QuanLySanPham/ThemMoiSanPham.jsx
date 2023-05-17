@@ -99,6 +99,7 @@ export default function ThemMoiSanPham() {
       list.description = value;
       list.price = +list.price;
       list.salePrice = +list.salePrice;
+      list.status = list.status !== (0 && 1) ? 1: list.status
       list.images = file.map((i) => i.src);
 
       callApi({
@@ -106,11 +107,11 @@ export default function ThemMoiSanPham() {
         method: id ? HTTP_METHOD.PUT : HTTP_METHOD.POST,
         data: list,
       }).then((response) => {
-        if (response.message) {
+        if (response.status) {
           messageError(response.message);
           return;
         }
-        messageSuccess(response);
+        messageSuccess(id? 'Cập nhật thành công':'Thêm mới thành công');
         navigate("/Admin/DanhSachSanPham");
       });
     });

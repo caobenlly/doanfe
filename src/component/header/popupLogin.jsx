@@ -235,7 +235,7 @@ export default function PopupLogin({ show, handleCancel }) {
         >
           <Input
             size="large"
-            placeholder="tên đăng nhập"
+            placeholder="Họ và tên"
             prefix={<UserOutlined />}
             iconRender={checkRender}
           />
@@ -469,7 +469,7 @@ export default function PopupLogin({ show, handleCancel }) {
         if (res.status) {
           return messageError(res.message);
         }
-        messageSuccess(`${res.message}, Vui lòng đăng nhập lại`);
+        messageSuccess(`Thành công, Vui lòng đăng nhập lại`);
         actionNavigation("login");
         console.log(res);
       });

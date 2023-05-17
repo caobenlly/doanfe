@@ -43,6 +43,9 @@ export default function ThemMoiBaiViet() {
       }
       const list = form.getFieldsValue(true);
       list.description = value;
+      if(!file?.src?.length && list.status === 1){
+        return messageError('Vui lòng thêm ảnh')
+      }
       list.image = file.src;
       callApi({
         url: id ? `/api/admin/posts/${id}` : "/api/admin/posts",
