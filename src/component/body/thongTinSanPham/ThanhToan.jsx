@@ -77,19 +77,29 @@ export default function CheckoutForm({
     });
   }
   function handleBank() {
-    console.log(data);
     form.validateFields().then((res) => {
       if (res?.errorFields?.length > 0) {
         return;
       }
+      const dataBuy = {
+        size: size.key,
+        product_id: data.id,
+        coupon_code: couponCode,
+        total_price: data.price,
+        product_price: data.price - discount,
+        ...form.getFieldsValue(true),
+      };
+      callApi({
+        url: "/home/api/orders",
+        method: HTTP_METHOD.POST,
+        data: dataBuy,
+      })
       callApi({
         url: `/api/thanhtoan?bankcode=NCB&amount=${
           data.price - discount
         }&vnp_OrderInfo=${data.name}`,
         method: HTTP_METHOD.POST,
       }).then((res) => {
-        console.log(res)
-        debugger
         window.location.href = res.data;
       });
     });

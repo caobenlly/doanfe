@@ -96,7 +96,7 @@ function ModalEdit({ getData, showModalEdit, closeModalEdit, dataEdit }) {
       <ImageUpload
         show={showPopupImg}
         closePreview={() => setShowPopupImg(false)}
-        dataFile={(data) => setFile(data[0].src)}
+        dataFile={(data) => setFile(data[0]?.src)}
         file={file}
         max={1}
       />

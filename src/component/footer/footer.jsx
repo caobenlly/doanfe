@@ -18,7 +18,7 @@ export default function ComponentFooter() {
     },
     {
       title: "EMAIL",
-      text: "hungmaychem@gmail.com",
+      text: "daihoccongnghiep@gmail.com",
       className: "footerSup",
     },
     {

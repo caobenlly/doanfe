@@ -139,7 +139,7 @@ export default function ThemMoiBaiViet() {
               className="imgSp"
             >
               <img
-                src={file.src}
+                src={file?.src}
                 alt=""
                 style={{ width: "100%", height: "100%" }}
               />
