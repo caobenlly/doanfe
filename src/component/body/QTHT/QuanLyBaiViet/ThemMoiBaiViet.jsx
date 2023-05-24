@@ -46,7 +46,7 @@ export default function ThemMoiBaiViet() {
       if(!file?.src?.length && list.status === 1){
         return messageError('Vui lòng thêm ảnh')
       }
-      list.image = file.src;
+      list.image = file?.src;
       callApi({
         url: id ? `/api/admin/posts/${id}` : "/api/admin/posts",
         method: id ? HTTP_METHOD.PUT : HTTP_METHOD.POST,

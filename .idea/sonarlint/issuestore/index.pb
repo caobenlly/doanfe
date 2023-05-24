@@ -23,8 +23,6 @@ U
 %src/component/header/immageHeader.jsx,b\8\b88c8130904ec4a139cb76b36636db8ff416af7c
 h
 8src/component/body/QTHT/QuanLySanPham/ThemMoiSanPham.jsx,c\b\cb84adfabf9132f34e23a1387a9224060987a3e1
-F
-src/api/configAxios.js,d\a\dadc3e298053338c433c56f6b8b64e34f5c5a44b
 S
 #src/component/header/popupLogin.jsx,0\d\0d80e69a278884d5cea5f885d2925a71ec3c3f2e
 <
@@ -34,6 +32,8 @@ S
 G
 src/assets/comonCpn.jsx,a\f\af8f4c45643ba9b05603fec6617923bb2ea55046
 i
-9src/component/body/QTHT/QuanLyDonHang/DanhSachDonHang.jsx,3\3\331df56f1f4cb3a8da3f1946671fd9af6eda27ac
-i
 9src/component/body/QTHT/QuanLySanPham/DanhSachSanPham.jsx,f\b\fb6f73143db364b633b315acea956b419056060a
+k
+;src/component/body/QTHT/QuanLyNhanHieu/DanhSachNhanHieu.jsx,2\c\2c9d05150c13615b4bc519ba4fe4630266d70d3c
+O
+src/component/footer/footer.jsx,4\4\44b083a84f1bb51f2d69a2a615f73d187b2fbd42
