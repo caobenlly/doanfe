@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.7de05a28.css",
-    "main.js": "./static/js/main.f893054a.js",
+    "main.js": "./static/js/main.4bd410d3.js",
     "static/media/logo.png": "./static/media/logo.c9568a55cb64c07fb039.png",
     "static/media/logo_1999sneaker.com.vn.png": "./static/media/logo_1999sneaker.com.vn.630dda75866d0fb659e1.png",
     "static/media/140244ncbbank.jpg": "./static/media/140244ncbbank.55ad1086a4f6131778b7.jpg",
@@ -13,10 +13,10 @@
     "index.html": "./index.html",
     "static/media/green-check-icon.svg": "./static/media/green-check-icon.e623e677c9c0e06e81f4cbeefaa04f0e.svg",
     "main.7de05a28.css.map": "./static/css/main.7de05a28.css.map",
-    "main.f893054a.js.map": "./static/js/main.f893054a.js.map"
+    "main.4bd410d3.js.map": "./static/js/main.4bd410d3.js.map"
   },
   "entrypoints": [
     "static/css/main.7de05a28.css",
-    "static/js/main.f893054a.js"
+    "static/js/main.4bd410d3.js"
   ]
 }
